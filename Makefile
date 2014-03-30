@@ -6,6 +6,10 @@ LIBS		= -framework Cocoa -framework OpenGL -framework IOKit -framework SDL2
 INCLUDES	= -I.
 EXECUTABLE	= c-fractals
 
+ifeq ($(shell uname), Linux)
+	LIBS = -lm -lGL -lSDL2
+endif
+
 release: CFLAGS += -O2
 release: $(SOURCES) $(EXECUTABLE)
 
